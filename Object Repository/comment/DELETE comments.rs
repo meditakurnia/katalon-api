@@ -39,7 +39,7 @@ RequestObject request = WSResponseManager.getInstance().getCurrentRequest()
 ResponseObject response = WSResponseManager.getInstance().getCurrentResponse()
 
 //verifikasi status code
-WS.verifyResponseStatusCode(response, 201)
-assertThat(response.getStatusCode()).isEqualTo(201)</verificationScript>
+WS.verifyResponseStatusCode(response, 200)
+assertThat(response.getStatusCode()).isEqualTo(200)</verificationScript>
    <wsdlAddress></wsdlAddress>
 </WebServiceRequestEntity>
