@@ -10,7 +10,7 @@
    <followRedirects>false</followRedirects>
    <httpBody></httpBody>
    <httpBodyContent>{
-  &quot;text&quot;: &quot;{\n\t\&quot;title\&quot; : \&quot;${var_title}\&quot;,\n    \&quot;body\&quot; : \&quot;${var_body}\&quot;,\n    \&quot;userId\&quot; : 1\n\n}&quot;,
+  &quot;text&quot;: &quot;{\&quot;data\&quot; : [\n \t{\n\t\&quot;title\&quot; : \&quot;${var_title}\&quot;,\n    \&quot;body\&quot; : \&quot;${var_body}\&quot;,\n    \&quot;userId\&quot; : 1\n\t},\n\t{\n\t\&quot;title\&quot; : \&quot;test\&quot;,\n    \&quot;body\&quot; : \&quot;test\&quot;,\n    \&quot;userId\&quot; : 1\n\t}\n  ]\n}&quot;,
   &quot;contentType&quot;: &quot;application/json&quot;,
   &quot;charset&quot;: &quot;UTF-8&quot;
 }</httpBodyContent>
@@ -69,11 +69,19 @@ ResponseObject response = WSResponseManager.getInstance().getCurrentResponse()
 WS.verifyResponseStatusCode(response, 201)
 assertThat(response.getStatusCode()).isEqualTo(201)
 
-//verifikasi data yang telah di create
+////verifikasi data yang telah di create
+//WS.verifyElementPropertyValue(response, 'title', 'ini title update')
+//WS.verifyElementPropertyValue(response, 'body', 'ini body update')
+//WS.verifyElementPropertyValue(response, 'userId', '1')
+//WS.verifyElementPropertyValue(response, 'id', '101')
 
-WS.verifyElementPropertyValue(response, 'title', 'ini title update')
-WS.verifyElementPropertyValue(response, 'body', 'ini body update')
-WS.verifyElementPropertyValue(response, 'userId', '1')
-WS.verifyElementPropertyValue(response, 'id', '101')</verificationScript>
+
+//verfikasi data yang telah di create
+WS.verifyElementPropertyValue(response, 'data[0].title', 'ini title update')
+WS.verifyElementPropertyValue(response, 'data[0].body', 'ini body update')
+WS.verifyElementPropertyValue(response, 'data[0].userId', '1')
+WS.verifyElementPropertyValue(response, 'data[1].title', 'test')
+WS.verifyElementPropertyValue(response, 'data[1].body', 'test')
+WS.verifyElementPropertyValue(response, 'data[1].userId', '1')</verificationScript>
    <wsdlAddress></wsdlAddress>
 </WebServiceRequestEntity>

@@ -28,9 +28,19 @@ response = WS.sendRequest(findTestObject('comment/Post comments'))
 WS.verifyResponseStatusCode(response, 201)
 assertThat(response.getStatusCode()).isEqualTo(201)
 
-//verifikasi data yang telah di input
-WS.verifyElementPropertyValue(response, 'postId', '1')
-WS.verifyElementPropertyValue(response, 'name', 'salsa putri')
-WS.verifyElementPropertyValue(response, 'email', 'salsa@mailsac.com')
-WS.verifyElementPropertyValue(response, 'body', 'ini body dan tulisan')
-WS.verifyElementPropertyValue(response, 'id', '501')
+////verifikasi data yang telah di input
+//WS.verifyElementPropertyValue(response, 'postId', '1')
+//WS.verifyElementPropertyValue(response, 'name', 'salsa putri')
+//WS.verifyElementPropertyValue(response, 'email', 'salsa@mailsac.com')
+//WS.verifyElementPropertyValue(response, 'body', 'ini body dan tulisan')
+//WS.verifyElementPropertyValue(response, 'id', '501')
+
+//verifikasi dua data
+WS.verifyElementPropertyValue(response, 'data[0].postId', '1')
+WS.verifyElementPropertyValue(response, 'data[0].name', 'salsa putri')
+WS.verifyElementPropertyValue(response, 'data[0].email', 'salsa@mailsac.com')
+WS.verifyElementPropertyValue(response, 'data[0].body', 'ini body dan tulisan')
+WS.verifyElementPropertyValue(response, 'data[1].postId', '1')
+WS.verifyElementPropertyValue(response, 'data[1].name', 'salsa putrii')
+WS.verifyElementPropertyValue(response, 'data[1].email', 'salsaa@mailsac.com')
+WS.verifyElementPropertyValue(response, 'data[1].body', 'inii body dan tulisan')

@@ -10,7 +10,7 @@
    <followRedirects>false</followRedirects>
    <httpBody></httpBody>
    <httpBodyContent>{
-  &quot;text&quot;: &quot;{\n    \&quot;postId\&quot;: 1,\n    \&quot;name\&quot;: \&quot;salsa putri\&quot;,\n    \&quot;email\&quot;: \&quot;salsa@mailsac.com\&quot;,\n    \&quot;body\&quot;: \&quot;ini body dan tulisan\&quot;\n}&quot;,
+  &quot;text&quot;: &quot;{ \&quot;data\&quot; : \n [\n   {\n    \&quot;postId\&quot;: 1,\n    \&quot;name\&quot;: \&quot;salsa putri\&quot;,\n    \&quot;email\&quot;: \&quot;salsa@mailsac.com\&quot;,\n    \&quot;body\&quot;: \&quot;ini body dan tulisan\&quot;\n\t},\n   {\n    \&quot;postId\&quot;: 1,\n    \&quot;name\&quot;: \&quot;salsa putrii\&quot;,\n    \&quot;email\&quot;: \&quot;salsaa@mailsac.com\&quot;,\n    \&quot;body\&quot;: \&quot;inii body dan tulisan\&quot;\n\t}\n  ]\n}\n   &quot;,
   &quot;contentType&quot;: &quot;application/json&quot;,
   &quot;charset&quot;: &quot;UTF-8&quot;
 }</httpBodyContent>
@@ -55,10 +55,20 @@ WS.verifyResponseStatusCode(response, 201)
 assertThat(response.getStatusCode()).isEqualTo(201)
 
 //verifikasi data yang telah di input
-WS.verifyElementPropertyValue(response, 'postId', '1')
-WS.verifyElementPropertyValue(response, 'name', 'salsa putri')
-WS.verifyElementPropertyValue(response, 'email', 'salsa@mailsac.com')
-WS.verifyElementPropertyValue(response, 'body', 'ini body dan tulisan')
-WS.verifyElementPropertyValue(response, 'id', '501')</verificationScript>
+//WS.verifyElementPropertyValue(response, 'postId', '1')
+//WS.verifyElementPropertyValue(response, 'name', 'salsa putri')
+//WS.verifyElementPropertyValue(response, 'email', 'salsa@mailsac.com')
+//WS.verifyElementPropertyValue(response, 'body', 'ini body dan tulisan')
+//WS.verifyElementPropertyValue(response, 'id', '501')
+
+//verifikasi dua data
+WS.verifyElementPropertyValue(response, 'data[0].postId', '1')
+WS.verifyElementPropertyValue(response, 'data[0].name', 'salsa putri')
+WS.verifyElementPropertyValue(response, 'data[0].email', 'salsa@mailsac.com')
+WS.verifyElementPropertyValue(response, 'data[0].body', 'ini body dan tulisan')
+WS.verifyElementPropertyValue(response, 'data[1].postId', '1')
+WS.verifyElementPropertyValue(response, 'data[1].name', 'salsa putrii')
+WS.verifyElementPropertyValue(response, 'data[1].email', 'salsaa@mailsac.com')
+WS.verifyElementPropertyValue(response, 'data[1].body', 'inii body dan tulisan')</verificationScript>
    <wsdlAddress></wsdlAddress>
 </WebServiceRequestEntity>

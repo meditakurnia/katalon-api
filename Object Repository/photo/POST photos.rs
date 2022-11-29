@@ -10,7 +10,7 @@
    <followRedirects>false</followRedirects>
    <httpBody></httpBody>
    <httpBodyContent>{
-  &quot;text&quot;: &quot;{\n    \&quot;albumId\&quot;: 1,\n    \&quot;title\&quot;: \&quot;ini photo\&quot;,\n    \&quot;url\&quot;: \&quot;https://google.com\&quot;,\n    \&quot;thumbnailUrl\&quot;: \&quot;https://google.com\&quot;\n  }&quot;,
+  &quot;text&quot;: &quot;{ \&quot;data\&quot; : \n [\n   {\n    \&quot;albumId\&quot;: 1,\n    \&quot;title\&quot;: \&quot;ini photo\&quot;,\n    \&quot;url\&quot;: \&quot;https://google.com\&quot;,\n    \&quot;thumbnailUrl\&quot;: \&quot;https://google.com\&quot;\n   },\n   {\n    \&quot;albumId\&quot;: 1,\n    \&quot;title\&quot;: \&quot;ini photoo\&quot;,\n    \&quot;url\&quot;: \&quot;https://googlee.com\&quot;,\n    \&quot;thumbnailUrl\&quot;: \&quot;https://googlee.com\&quot;\n   }\n  ]\n}&quot;,
   &quot;contentType&quot;: &quot;application/json&quot;,
   &quot;charset&quot;: &quot;UTF-8&quot;
 }</httpBodyContent>
@@ -54,11 +54,22 @@ ResponseObject response = WSResponseManager.getInstance().getCurrentResponse()
 WS.verifyResponseStatusCode(response, 201)
 assertThat(response.getStatusCode()).isEqualTo(201)
 
+////verifikasi data yang diinput
+//WS.verifyElementPropertyValue(response, 'albumId', '1')
+//WS.verifyElementPropertyValue(response, 'title', 'ini photo')
+//WS.verifyElementPropertyValue(response, 'url', 'https://google.com')
+//WS.verifyElementPropertyValue(response, 'thumbnailUrl', 'https://google.com')
+//WS.verifyElementPropertyValue(response, 'id', '5001')
+
 //verifikasi data yang diinput
-WS.verifyElementPropertyValue(response, 'albumId', '1')
-WS.verifyElementPropertyValue(response, 'title', 'ini photo')
-WS.verifyElementPropertyValue(response, 'url', 'https://google.com')
-WS.verifyElementPropertyValue(response, 'thumbnailUrl', 'https://google.com')
-WS.verifyElementPropertyValue(response, 'id', '5001')</verificationScript>
+
+WS.verifyElementPropertyValue(response, 'data[0].albumId', '1')
+WS.verifyElementPropertyValue(response, 'data[0].title', 'ini photo')
+WS.verifyElementPropertyValue(response, 'data[0].url', 'https://google.com')
+WS.verifyElementPropertyValue(response, 'data[0].thumbnailUrl', 'https://google.com')
+WS.verifyElementPropertyValue(response, 'data[1].albumId', '1')
+WS.verifyElementPropertyValue(response, 'data[1].title', 'ini photoo')
+WS.verifyElementPropertyValue(response, 'data[1].url', 'https://googlee.com')
+WS.verifyElementPropertyValue(response, 'data[1].thumbnailUrl', 'https://googlee.com')</verificationScript>
    <wsdlAddress></wsdlAddress>
 </WebServiceRequestEntity>

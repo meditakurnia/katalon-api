@@ -28,9 +28,20 @@ response = WS.sendRequest(findTestObject('photo/POST photos'))
 WS.verifyResponseStatusCode(response, 201)
 assertThat(response.getStatusCode()).isEqualTo(201)
 
+////verifikasi data yang diinput
+//WS.verifyElementPropertyValue(response, 'albumId', '1')
+//WS.verifyElementPropertyValue(response, 'title', 'ini photo')
+//WS.verifyElementPropertyValue(response, 'url', 'https://google.com')
+//WS.verifyElementPropertyValue(response, 'thumbnailUrl', 'https://google.com')
+//WS.verifyElementPropertyValue(response, 'id', '5001')
+
 //verifikasi data yang diinput
-WS.verifyElementPropertyValue(response, 'albumId', '1')
-WS.verifyElementPropertyValue(response, 'title', 'ini photo')
-WS.verifyElementPropertyValue(response, 'url', 'https://google.com')
-WS.verifyElementPropertyValue(response, 'thumbnailUrl', 'https://google.com')
-WS.verifyElementPropertyValue(response, 'id', '5001')
+
+WS.verifyElementPropertyValue(response, 'data[0].albumId', '1')
+WS.verifyElementPropertyValue(response, 'data[0].title', 'ini photo')
+WS.verifyElementPropertyValue(response, 'data[0].url', 'https://google.com')
+WS.verifyElementPropertyValue(response, 'data[0].thumbnailUrl', 'https://google.com')
+WS.verifyElementPropertyValue(response, 'data[1].albumId', '1')
+WS.verifyElementPropertyValue(response, 'data[1].title', 'ini photoo')
+WS.verifyElementPropertyValue(response, 'data[1].url', 'https://googlee.com')
+WS.verifyElementPropertyValue(response, 'data[1].thumbnailUrl', 'https://googlee.com')

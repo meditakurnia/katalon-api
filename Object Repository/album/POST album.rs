@@ -10,7 +10,7 @@
    <followRedirects>false</followRedirects>
    <httpBody></httpBody>
    <httpBodyContent>{
-  &quot;text&quot;: &quot;{\n\t\&quot;title\&quot; : \&quot;album coba 1\&quot;,\n    \&quot;userId\&quot; : 1\n\n}&quot;,
+  &quot;text&quot;: &quot;{ \n  \&quot;data\&quot; : [\n\t{\n\t\&quot;title\&quot; : \&quot;album coba 1\&quot;,\n    \&quot;userId\&quot; : 1\n    },\n\t{\n\t\&quot;title\&quot; : \&quot;album coba 2\&quot;,\n    \&quot;userId\&quot; : 1\n    }\n  ]\n}&quot;,
   &quot;contentType&quot;: &quot;application/json&quot;,
   &quot;charset&quot;: &quot;UTF-8&quot;
 }</httpBodyContent>
@@ -54,9 +54,15 @@ ResponseObject response = WSResponseManager.getInstance().getCurrentResponse()
 WS.verifyResponseStatusCode(response, 201)
 assertThat(response.getStatusCode()).isEqualTo(201)
 
+////verifikasi data post album
+//WS.verifyElementPropertyValue(response, 'title', 'album coba 1')
+//WS.verifyElementPropertyValue(response, 'userId', '1')
+//WS.verifyElementPropertyValue(response, 'id', '101')
+
 //verifikasi data post album
-WS.verifyElementPropertyValue(response, 'title', 'album coba 1')
-WS.verifyElementPropertyValue(response, 'userId', '1')
-WS.verifyElementPropertyValue(response, 'id', '101')</verificationScript>
+WS.verifyElementPropertyValue(response, 'data[0].title', 'album coba 1')
+WS.verifyElementPropertyValue(response, 'data[0].userId', '1')
+WS.verifyElementPropertyValue(response, 'data[1].title', 'album coba 2')
+WS.verifyElementPropertyValue(response, 'data[1].userId', '1')</verificationScript>
    <wsdlAddress></wsdlAddress>
 </WebServiceRequestEntity>

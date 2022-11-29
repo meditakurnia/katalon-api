@@ -29,7 +29,14 @@ WS.verifyResponseStatusCode(response, 201)
 assertThat(response.getStatusCode()).isEqualTo(201)
 
 //verifikasi data yang telah di create
-WS.verifyElementPropertyValue(response, 'title', 'ini title update')
-WS.verifyElementPropertyValue(response, 'body', 'ini body update')
-WS.verifyElementPropertyValue(response, 'userId', '1')
-WS.verifyElementPropertyValue(response, 'id', '101')
+//WS.verifyElementPropertyValue(response, 'title', 'ini title update')
+//WS.verifyElementPropertyValue(response, 'body', 'ini body update')
+//WS.verifyElementPropertyValue(response, 'userId', '1')
+//WS.verifyElementPropertyValue(response, 'id', '101')
+
+WS.verifyElementPropertyValue(response, 'data[0].title', 'ini title update')
+WS.verifyElementPropertyValue(response, 'data[0].body', 'ini body update')
+WS.verifyElementPropertyValue(response, 'data[0].userId', '1')
+WS.verifyElementPropertyValue(response, 'data[1].title', 'test')
+WS.verifyElementPropertyValue(response, 'data[1].body', 'test')
+WS.verifyElementPropertyValue(response, 'data[1].userId', '1')

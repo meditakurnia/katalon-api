@@ -29,6 +29,12 @@ WS.verifyResponseStatusCode(response, 201)
 assertThat(response.getStatusCode()).isEqualTo(201)
 
 //verifikasi data post album
-WS.verifyElementPropertyValue(response, 'title', 'album coba 1')
-WS.verifyElementPropertyValue(response, 'userId', '1')
-WS.verifyElementPropertyValue(response, 'id', '101')
+//WS.verifyElementPropertyValue(response, 'title', 'album coba 1')
+//WS.verifyElementPropertyValue(response, 'userId', '1')
+//WS.verifyElementPropertyValue(response, 'id', '101')
+
+//verifikasi data post album
+WS.verifyElementPropertyValue(response, 'data[0].title', 'album coba 1')
+WS.verifyElementPropertyValue(response, 'data[0].userId', '1')
+WS.verifyElementPropertyValue(response, 'data[1].title', 'album coba 2')
+WS.verifyElementPropertyValue(response, 'data[1].userId', '1')
